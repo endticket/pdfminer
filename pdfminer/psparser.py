@@ -7,9 +7,12 @@ import logging
 import six # Python 2+3 compatibility
 try:
     from django.conf import settings
+    settings.configure()
 except ImportError:
     # in case it's not a django project
     settings = None
+
+STRICT = getattr(settings, 'PDF_MINER_IS_STRICT', True)
 
 
 def bytesindex(s,i,j=None):
@@ -21,7 +24,6 @@ def bytesindex(s,i,j=None):
 
 from .utils import choplist
 
-STRICT = getattr(settings, 'PDF_MINER_IS_STRICT', True)
 
 ##  PS Exceptions
 ##
