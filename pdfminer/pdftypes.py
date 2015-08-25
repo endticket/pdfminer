@@ -228,7 +228,7 @@ class PDFStream(PDFObject):
             filters = [filters]
         if not isinstance(params, list):
             params = [params]
-        return zip(filters, params)
+        return list(zip(filters, params))
 
     def decode(self):
         assert self.data is None and self.rawdata is not None
